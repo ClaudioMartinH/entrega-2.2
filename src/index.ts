@@ -2,35 +2,32 @@ import { throttle } from "./throttle.js";
 
 let contador: number = 0;
 
-function showResults(): string {
+export function showResults(): void {
   let widthPage: HTMLElement | null = document.getElementById("width");
   let heightPage: HTMLElement | null = document.getElementById("height");
-  
-  if (heightPage && widthPage) {
-    return (widthPage.innerHTML = `Height: ${window.innerHeight} Width: ${window.innerWidth}`);
-  } else {
-    return "0";
+  let contadorPage: HTMLElement | null = document.getElementById("contador");
+
+  if (widthPage) {
+    widthPage.innerHTML = `Ancho página (px): ${window.innerWidth}`;
+  }
+
+  if (heightPage) {
+    heightPage.innerHTML = `Alto página (px): ${window.innerHeight}`;
+  }
+
+  if (contadorPage) {
+    contadorPage.innerHTML = `Incremento contador: ${contador}`;
   }
 }
+showResults();
 
 window.addEventListener(
   "resize",
-  throttle(function (evt: any) {
-    console.log(window.innerWidth);
-    console.log(window.innerHeight);
-    let widthPage: HTMLElement | null = document.getElementById("width");
-    contador ++;
-    console.log("Numero de veces disparado el contador: ", contador)
-    let heightPage: HTMLElement | null = document.getElementById("height");
-
-    if (heightPage && widthPage) {
-      return (widthPage.innerHTML = 
-        `Width: ${window.innerWidth} <br>
-         Height: ${window.innerHeight} <br>
-         Contador: ${contador++}`);
-    } else {
-      return "0";
-    }
-  }, 250)
+  throttle(function () {
+    contador++;
+    console.log("Width: ", window.innerWidth);
+    console.log("Height: ", window.innerHeight);
+    console.log("Incremento del contador: ", contador);
+    showResults();
+  }, 500)
 );
-showResults();
