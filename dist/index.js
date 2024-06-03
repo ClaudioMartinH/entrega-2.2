@@ -11,7 +11,7 @@ export function showResults() {
         heightPage.innerHTML = `Height: ${window.innerHeight}`;
     }
     if (contadorPage) {
-        contadorPage.innerHTML = `contador: ${contador}`;
+        contadorPage.innerHTML = `Contador: ${contador}`;
     }
 }
 showResults();

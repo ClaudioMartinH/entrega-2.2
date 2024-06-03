@@ -16,7 +16,7 @@ export function showResults(): void {
   }
 
   if (contadorPage) {
-    contadorPage.innerHTML = `contador: ${contador}`;
+    contadorPage.innerHTML = `Contador: ${contador}`;
   }
 }
 showResults();
