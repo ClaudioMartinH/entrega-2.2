@@ -8,15 +8,15 @@ export function showResults(): void {
   let contadorPage: HTMLElement | null = document.getElementById("contador");
 
   if (widthPage) {
-    widthPage.innerHTML = `Ancho página (px): ${window.innerWidth}`;
+    widthPage.innerHTML = `Width: ${window.innerWidth}`;
   }
 
   if (heightPage) {
-    heightPage.innerHTML = `Alto página (px): ${window.innerHeight}`;
+    heightPage.innerHTML = `Height: ${window.innerHeight}`;
   }
 
   if (contadorPage) {
-    contadorPage.innerHTML = `Incremento contador: ${contador}`;
+    contadorPage.innerHTML = `Counter: ${contador}`;
   }
 }
 showResults();

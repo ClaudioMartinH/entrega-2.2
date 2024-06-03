@@ -5,13 +5,13 @@ export function showResults() {
     let heightPage = document.getElementById("height");
     let contadorPage = document.getElementById("contador");
     if (widthPage) {
-        widthPage.innerHTML = `Ancho página (px): ${window.innerWidth}`;
+        widthPage.innerHTML = `Width: ${window.innerWidth}`;
     }
     if (heightPage) {
-        heightPage.innerHTML = `Alto página (px): ${window.innerHeight}`;
+        heightPage.innerHTML = `Height: ${window.innerHeight}`;
     }
     if (contadorPage) {
-        contadorPage.innerHTML = `Incremento contador: ${contador}`;
+        contadorPage.innerHTML = `Counter: ${contador}`;
     }
 }
 showResults();
