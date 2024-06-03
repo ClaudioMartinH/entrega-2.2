@@ -1,24 +1,24 @@
 import { throttle } from "./throttle.js";
-let counter = 0;
+let contador = 0;
 export function showResults() {
     let widthPage = document.getElementById("width");
     let heightPage = document.getElementById("height");
-    let counterPage = document.getElementById("counter");
+    let contadorPage = document.getElementById("contador");
     if (widthPage) {
         widthPage.innerHTML = `Width: ${window.innerWidth}`;
     }
     if (heightPage) {
         heightPage.innerHTML = `Height: ${window.innerHeight}`;
     }
-    if (counterPage) {
-        counterPage.innerHTML = `Counter: ${counter}`;
+    if (contadorPage) {
+        contadorPage.innerHTML = `contador: ${contador}`;
     }
 }
 showResults();
 window.addEventListener("resize", throttle(function () {
-    counter++;
+    contador++;
     console.log("Width: ", window.innerWidth);
     console.log("Height: ", window.innerHeight);
-    console.log("Counter: ", counter);
+    console.log("Contador: ", contador);
     showResults();
 }, 500));

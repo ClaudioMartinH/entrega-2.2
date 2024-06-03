@@ -1,11 +1,11 @@
 import { throttle } from "./throttle.js";
 
-let counter: number = 0;
+let contador: number = 0;
 
 export function showResults(): void {
   let widthPage: HTMLElement | null = document.getElementById("width");
   let heightPage: HTMLElement | null = document.getElementById("height");
-  let counterPage: HTMLElement | null = document.getElementById("counter");
+  let contadorPage: HTMLElement | null = document.getElementById("contador");
 
   if (widthPage) {
     widthPage.innerHTML = `Width: ${window.innerWidth}`;
@@ -15,8 +15,8 @@ export function showResults(): void {
     heightPage.innerHTML = `Height: ${window.innerHeight}`;
   }
 
-  if (counterPage) {
-    counterPage.innerHTML = `Counter: ${counter}`;
+  if (contadorPage) {
+    contadorPage.innerHTML = `contador: ${contador}`;
   }
 }
 showResults();
@@ -24,10 +24,10 @@ showResults();
 window.addEventListener(
   "resize",
   throttle(function () {
-    counter++;
+    contador++;
     console.log("Width: ", window.innerWidth);
     console.log("Height: ", window.innerHeight);
-    console.log("Counter: ", counter);
+    console.log("Contador: ", contador);
     showResults();
   }, 500)
 );
