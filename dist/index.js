@@ -19,6 +19,6 @@ window.addEventListener("resize", throttle(function () {
     contador++;
     console.log("Width: ", window.innerWidth);
     console.log("Height: ", window.innerHeight);
-    console.log("Incremento del contador: ", contador);
+    console.log("Counter: ", contador);
     showResults();
 }, 500));
