@@ -11,14 +11,12 @@ export function showResults() {
         heightPage.innerHTML = `Height: ${window.innerHeight}`;
     }
     if (contadorPage) {
-        contadorPage.innerHTML = `Contador: ${contador}`;
+        contadorPage.innerHTML = `Counter: ${contador}`;
     }
+    contador++;
+    console.log("Width: ", window.innerWidth, "Height: ", window.innerHeight, "Counter: ", contador);
 }
 showResults();
 window.addEventListener("resize", throttle(function () {
-    contador++;
-    console.log("Width: ", window.innerWidth);
-    console.log("Height: ", window.innerHeight);
-    console.log("Contador: ", contador);
     showResults();
 }, 500));

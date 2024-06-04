@@ -50,6 +50,6 @@ describe("showResults", () => {
 
     expect(widthPage?.innerHTML).toBe("Width: 1024");
     expect(heightPage?.innerHTML).toBe("Height: 768");
-    expect(contadorPage?.innerHTML).toBe("Contador: 0");
+    expect(contadorPage?.innerHTML).toBe("Contador: 1");
   });
 });
