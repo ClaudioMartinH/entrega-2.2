@@ -1,4 +1,3 @@
-import { showResults } from "./index.js";
 import { JSDOM } from "jsdom";
 import readline from "readline";
 import chalk from "chalk";
@@ -9,20 +8,30 @@ const { window } = new JSDOM(`<!DOCTYPE html><html><body>
 </body></html>`);
 global.window = window;
 global.document = window.document;
-globalThis.contador = 0;
-console.log(chalk.blue("Bienvenido a la CLI para comprobar la funcionalidad de showResults y throttle."));
+let counter = 0;
+function showResults() {
+    counter++;
+    console.log("Width: ", window.innerWidth, "Height: ", window.innerHeight, "Counter: ", counter);
+}
+console.log(chalk.blue("Hola, vamos a comprobar la funcionalidad throttle de la funcion showResults."));
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
 });
-rl.question(chalk.green("Presiona 'Enter' para mostrar los resultados iniciales y 'r' para simular un evento de resize: "), (answer) => {
+rl.question(chalk.green("Presiona 'Enter' para mostrar las medidas iniciales y 'r' para simular un evento de resize: "), (answer) => {
     if (answer === "") {
         showResults();
     }
     rl.on("line", (input) => {
         if (input === "r") {
-            globalThis.contador++;
-            window.dispatchEvent(new Event("resize"));
+            const resizeEvent = new window.Event("resize");
+            window.dispatchEvent(resizeEvent);
+            showResults();
+        }
+        else if (input === "q") {
+            rl.close();
+            console.log(chalk.red("¡Adiós!"));
+            process.exit(0);
         }
         console.log(chalk.yellow("Presiona 'r' para simular un evento de resize o 'q' para salir: "));
     });
