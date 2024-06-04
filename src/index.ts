@@ -7,6 +7,7 @@ export function showResults(): void {
   let heightPage: HTMLElement | null = document.getElementById("height");
   let contadorPage: HTMLElement | null = document.getElementById("contador");
 
+  contador++;
   if (widthPage) {
     widthPage.innerHTML = `Width: ${window.innerWidth}`;
   }
@@ -18,7 +19,6 @@ export function showResults(): void {
   if (contadorPage) {
     contadorPage.innerHTML = `Counter: ${contador}`;
   }
-  contador++;
   console.log(
     "Width: ",
     window.innerWidth,
