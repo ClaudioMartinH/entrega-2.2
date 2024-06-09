@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { throttle } from "../dist/throttle";
-import { showResults } from "../dist/index";
+import { showResults, restartCount } from "../dist/index";
 
 beforeEach(() => {
   document.body.innerHTML = `
@@ -8,6 +8,27 @@ beforeEach(() => {
     <div id="height"></div>
     <div id="contador"></div>
   `;
+  
+});
+
+
+describe("showResults", () => {
+  it("should show results in DOM elements with window width and height, and add a counter of how many times the function is fired", () => {
+    global.window = Object.create(window);
+    Object.defineProperty(window, "innerWidth", { value: 1024 });
+    Object.defineProperty(window, "innerHeight", { value: 768 });
+
+    
+    showResults();
+
+    const widthPage = document.getElementById("width");
+    const heightPage = document.getElementById("height");
+    const contadorPage = document.getElementById("contador");
+
+    expect(widthPage?.innerHTML).toBe("Width: 1024");
+    expect(heightPage?.innerHTML).toBe("Height: 768");
+    expect(contadorPage?.innerHTML).toBe("Counter: 1");
+  });
 });
 
 describe("throttle function", () => {
@@ -36,20 +57,3 @@ describe("throttle function", () => {
   });
 });
 
-describe("showResults", () => {
-  it("should show results in DOM elements with window width and height, and add a counter of how many times the function is fired", () => {
-    global.window = Object.create(window);
-    Object.defineProperty(window, "innerWidth", { value: 1024 });
-    Object.defineProperty(window, "innerHeight", { value: 768 });
-
-    showResults();
-
-    const widthPage = document.getElementById("width");
-    const heightPage = document.getElementById("height");
-    const contadorPage = document.getElementById("contador");
-
-    expect(widthPage?.innerHTML).toBe("Width: 1024");
-    expect(heightPage?.innerHTML).toBe("Height: 768");
-    expect(contadorPage?.innerHTML).toBe("Contador: 1");
-  });
-});
